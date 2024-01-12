@@ -1,0 +1,38 @@
+.CardDay {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-gray-light);
+  padding: 20px;
+  // height: 200px;
+  border-radius: 50px;
+}
+
+// .up,
+// .down {
+//   width: 100%;
+//   background: var(--color-gray-light);
+//   position: relative;
+// }
+
+// .up::after,
+// .down::after{
+//   content: "";
+//   padding-top: 40%;
+//   display: block;
+// }
+
+// .up {
+//   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+// }
+// .down {
+//   border-radius: 0 0 50% 50% / 0 0 100% 100%;
+// }
+
+.center {
+  // padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  background: var(--color-gray-light);
+}

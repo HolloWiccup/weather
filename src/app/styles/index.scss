@@ -1,0 +1,11 @@
+@import "reset";
+@import "variables";
+@import "themes/normal";
+
+.app {
+  background: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
