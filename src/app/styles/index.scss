@@ -3,9 +3,10 @@
 @import "themes/normal";
 
 .app {
-  background: var(--bg-color);
+  font-family: "Josefin Sans", sans-serif;
+  background: #cc9da5;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  justify-content: center;
+  align-items: center;
 }

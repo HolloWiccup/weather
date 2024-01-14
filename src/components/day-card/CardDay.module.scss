@@ -1,0 +1,26 @@
+.CardDay {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-gray-light);
+  padding: 25px;
+  border-radius: 55px;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  background: var(--color-gray-light);
+}
+
+.dayweek {
+  font-family: Consolas;
+  font-size: 24px;
+}
+
+.temperature {
+  font-size: 40px;
+  font-weight: bold;
+}

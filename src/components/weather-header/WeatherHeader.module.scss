@@ -1,0 +1,15 @@
+.WeatherHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.time {
+  font-size: 44px;
+}
+
+.date {
+  font-size: 20px;
+  color: gray;
+}

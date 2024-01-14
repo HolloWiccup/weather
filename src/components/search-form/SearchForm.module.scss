@@ -1,0 +1,27 @@
+.input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: transparent;
+  text-shadow: 0 0 0 black;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.form {
+  width: fit-content;
+  display: flex;
+  padding: 5px;
+  border-radius: 16px;
+  background: var(--color-gray-light);
+  gap: 10px;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}

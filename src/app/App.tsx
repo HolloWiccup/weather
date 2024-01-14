@@ -1,12 +1,9 @@
-import { CardDay } from "@/entities/CardDay"
-import { SearchForm } from "@/features/SearchForm"
+import { Weather } from '@/components/weather/Weather'
 
 const App = () => {
-
 	return (
 		<div className="app">
-			<SearchForm />
-			<CardDay />
+			<Weather />
 		</div>
 	)
 }

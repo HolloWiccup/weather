@@ -1,1 +1,0 @@
-export { CardDay } from "./ui/CardDay";
