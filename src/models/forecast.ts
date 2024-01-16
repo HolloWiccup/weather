@@ -1,17 +1,12 @@
-export interface IForecastWeather {
+export interface ForecastWeather {
   cod: string;
   message: number;
   cnt: number;
-  list: List[];
+  list: ForecastList[];
   city: City;
 }
 
-export interface IForecastWeatherNormalized {
-  city: string;
-  list: ListNormalized[];
-}
-
-export interface List {
+export interface ForecastList {
   dt: number;
   main: Main;
   weather: Weather[];
@@ -21,15 +16,6 @@ export interface List {
   pop: number;
   rain: Rain;
   dt_txt: string;
-}
-
-export interface ListNormalized {
-  date: string;
-  time: string;
-  temperature: number;
-  feels_like: number;
-  description: string;
-  icon: string;
 }
 
 interface Main {
