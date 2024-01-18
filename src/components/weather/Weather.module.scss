@@ -1,11 +1,14 @@
 .Weather {
   display: flex;
-  min-width: 60%;
+  // min-width: 60%;
+  // max-width: 90%;
+  width: 60%;
   height: 700px;
   background-color: white;
 }
 
 .content {
-  width: 100%;
+  // flex: 0 1;
+  width: calc(100% - 300px);
   padding: 20px;
 }

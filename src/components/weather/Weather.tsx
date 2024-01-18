@@ -4,18 +4,20 @@ import { WeatherNow } from '../weather-now/WeatherNow'
 import { classNames } from '@/helpers/classNames/classNames'
 import classes from './Weather.module.scss'
 import { Forecast } from '../forecast/Forecast'
-// import { useSearchStore } from '../search-form/searchStore'
+import { useEffect } from 'react'
 
 const Weather = () => {
-	const cityWeather = useCityWeatherStore((state) => state.cityWeather)
-	// const {value} = useSearchStore(state)
+	const { cityWeather, forecastWeather, lastRequestCity, getWeather } = useCityWeatherStore()
+	useEffect(() => {
+		if (lastRequestCity) getWeather(lastRequestCity)
+	}, [])
 
 	return (
 		<div className={classNames(classes.Weather)}>
 			<WeatherNow cityWeather={cityWeather} />
 			<div className={classNames(classes.content)}>
 				<WeatherHeader />
-				<Forecast />
+				{forecastWeather && <Forecast forecastWeather={forecastWeather} />}
 			</div>
 		</div>
 	)

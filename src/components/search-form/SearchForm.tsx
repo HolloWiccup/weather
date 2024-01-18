@@ -2,13 +2,13 @@ import { classNames } from '@/helpers/classNames/classNames'
 import SearchIcon from '@/assets/icons/search-icon.svg'
 import classes from './SearchForm.module.scss'
 import { IconSvg } from '@/components/IconSvg/IconSvg'
-import { useSearchStore } from './searchStore'
+import { useSearchStore } from './searchFormStore'
 import { useCityWeatherStore } from './cityWeatherStore'
 import { useCallback } from 'react'
 
 const SearchForm = () => {
 	const { value, setValue, clearForm } = useSearchStore()
-	const { getCityWeather, getCityForecast } = useCityWeatherStore()
+	const { getWeather } = useCityWeatherStore()
 
 	const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setValue(e.target.value)
@@ -17,15 +17,12 @@ const SearchForm = () => {
 	const onSearchHandler = useCallback(
 		async (e: React.FormEvent<HTMLFormElement>) => {
 			e.preventDefault()
-			const resultWeather = await getCityWeather(value)
+			const resultWeather = await getWeather(value)
 			if (!resultWeather.ok) return
-
-			const resultForecast = await getCityForecast(value)
-			if (!resultForecast.ok) return
 
 			clearForm()
 		},
-		[value, clearForm, getCityForecast, getCityWeather],
+		[value, clearForm, getWeather],
 	)
 
 	return (

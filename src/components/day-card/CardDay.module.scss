@@ -3,14 +3,14 @@
   display: flex;
   flex-direction: column;
   background: var(--color-gray-light);
-  padding: 25px;
-  border-radius: 55px;
+  padding: 10px;
+  border-radius: 12px;
 }
 
 .center {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
   text-align: center;
   background: var(--color-gray-light);
 }

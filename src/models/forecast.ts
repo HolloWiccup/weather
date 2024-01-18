@@ -6,6 +6,10 @@ export interface ForecastWeather {
   city: City;
 }
 
+export interface ForecastNormalize {
+	[key: string]: ForecastItem[];
+}
+
 export interface ForecastItem {
   dt: number;
   main: Main;

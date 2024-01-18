@@ -1,19 +1,38 @@
 import { classNames } from '@/helpers/classNames/classNames'
 import classes from './Forecast.module.scss'
-import { useCityWeatherStore } from '../search-form/cityWeatherStore'
-import { CardDay } from '../day-card/CardDay'
+import { DayCardList } from '../day-card-list/DayCardList'
+import { DayTab } from '../day-tab/DayTab'
+import { useState } from 'react'
+import { ForecastNormalize } from '@/models/forecast'
 
-const Forecast = () => {
-	const { forecastWeather } = useCityWeatherStore()
-	if (!forecastWeather) return <div>empty</div>
+interface ForecastProps {
+	forecastWeather: ForecastNormalize
+}
 
-	const { list } = forecastWeather
+const Forecast = ({ forecastWeather }: ForecastProps) => {
 
-	const listCard = list
-		.slice(0,6)
-		.map((item) => <CardDay key={item.dt_txt} item={item} />)
+	const keys = Object.keys(forecastWeather)
+	const [activeTab, setActiveTab] = useState(keys[0])
 
-	return <div className={classNames(classes.Forecast)}>{...listCard}</div>
+	const onClickTabHandler = (name: string) => {
+		setActiveTab(name)
+	}
+
+	return (
+		<div className={classNames(classes.Forecast)}>
+			<div className={classNames(classes.tabs)}>
+				{keys.map((item) => (
+					<DayTab
+						active={activeTab === item}
+						onClick={onClickTabHandler}
+						name={item}
+						key={item}
+					/>
+				))}
+			</div>
+			<DayCardList hourlyWether={forecastWeather[activeTab]} />
+		</div>
+	)
 }
 
 export { Forecast }

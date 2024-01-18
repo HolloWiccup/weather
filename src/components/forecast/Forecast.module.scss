@@ -1,5 +1,16 @@
 .Forecast {
+  height: calc(100% - 75px);
+  // flex: 0 1;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 10px;
+  overflow-y: auto;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  // gap: 10px;
+  background: var(--color-gray-dark)
+  
 }
