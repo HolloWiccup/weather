@@ -10,25 +10,35 @@ const FORECAST_URL = 'https://api.openweathermap.org/data/2.5/forecast'
 interface CityWeatherState {
 	cityWeather: CityWeather | undefined
 	forecastWeather: ForecastWeather | undefined
-	getCityWeather: (city: string) => void
-	getCityForecast: (city: string) => void
+	getCityWeather: (city: string) => Promise<{ ok: boolean }>
+	getCityForecast: (city: string) => Promise<{ ok: boolean }>
 }
 
 export const useCityWeatherStore = create<CityWeatherState>()((set) => ({
 	cityWeather: undefined,
 	forecastWeather: undefined,
 	getCityWeather: async (city) => {
-		const response = await request<CityWeather>(createUrl(WEATHER_URL, city))
-		if (response) {
-			set({ cityWeather: response })
+		try {
+			const response = await request<CityWeather>(createUrl(WEATHER_URL, city))
+			if (response) {
+				set({ cityWeather: response })
+				return new Promise((resolve) => resolve({ ok: true }))
+			}
+			return new Promise((resolve) => resolve({ ok: false }))
+		} catch (error) {
+			return new Promise((resolve) => resolve({ ok: false }))
 		}
 	},
 	getCityForecast: async (city) => {
-		const response = await request<ForecastWeather>(
-			createUrl(FORECAST_URL, city),
-		)
-		if (response) {
-			set({ forecastWeather: response })
+		try {
+			const response = await request<ForecastWeather>(createUrl(FORECAST_URL, city))
+			if (response) {
+				set({ forecastWeather: response })
+				return new Promise((resolve) => resolve({ ok: true }))
+			}
+			return new Promise((resolve) => resolve({ ok: false }))
+		} catch (error) {
+			return new Promise((resolve) => resolve({ ok: false }))
 		}
 	},
 }))

@@ -5,14 +5,7 @@ import { List } from '../list/List'
 import classes from './SunsetSunrise.module.scss'
 import SunriseIcon from '@/assets/icons/sunrise-icon.svg'
 import SunsetIcon from '@/assets/icons/sunset-icon.svg'
-
-const getDate = (seconds: number) => {
-	const date = new Date(seconds * 1000)
-	const minutes = date.getMinutes().toString().padStart(2, '0')
-	const hours = date.getHours().toString().padStart(2, '0')
-
-	return `${hours}:${minutes}`
-}
+import { getDate } from '@/helpers/helpers'
 
 interface SunsetSunriseProps {
 	sunrise: number
