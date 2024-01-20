@@ -3,7 +3,7 @@ import SearchIcon from '@/assets/icons/search-icon.svg'
 import classes from './SearchForm.module.scss'
 import { IconSvg } from '@/components/IconSvg/IconSvg'
 import { useSearchStore } from './searchFormStore'
-import { useCityWeatherStore } from './cityWeatherStore'
+import { useCityWeatherStore } from '../../stores/cityWeatherStore'
 import { useCallback } from 'react'
 
 const SearchForm = () => {

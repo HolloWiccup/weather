@@ -1,0 +1,12 @@
+.CityCard {
+  background: var(--color-gray-light);
+  padding: 20px;
+  flex: 1 1 50%;
+  border-radius: 12px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  min-width: 260px;
+}

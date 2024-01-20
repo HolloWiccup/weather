@@ -11,7 +11,7 @@ const FORECAST_URL = 'https://api.openweathermap.org/data/2.5/forecast'
 interface CityWeatherState {
 	cityWeather: CityWeather | undefined
 	forecastWeather: ForecastNormalize | undefined
-	lastRequestCity: string
+	lastRequestCities: string[]
 	getCityWeather: (city: string) => Promise<{ ok: boolean }>
 	getWeather: (city: string) => Promise<{ ok: boolean }>
 	getCityForecast: (city: string) => Promise<{ ok: boolean }>
@@ -22,25 +22,32 @@ export const useCityWeatherStore = create<CityWeatherState>()(
 		(set, get) => ({
 			cityWeather: undefined,
 			forecastWeather: undefined,
-			lastRequestCity: '',
+			lastRequestCities: [],
 			getCityWeather: async (city) => {
 				try {
 					const response = await request<CityWeather>(
 						createUrl(WEATHER_URL, city),
 					)
-					if (response) {
-						set({ cityWeather: response, lastRequestCity: response.name })
-						return new Promise((resolve) => resolve({ ok: true }))
+					if (!response) {
+						return new Promise((resolve) => resolve({ ok: false }))
 					}
-					return new Promise((resolve) => resolve({ ok: false }))
+					const cities = get().lastRequestCities.filter(
+						(item) => item !== response.name,
+					)
+					set({
+						cityWeather: response,
+						lastRequestCities: [response.name, ...cities],
+					})
+
+					return new Promise((resolve) => resolve({ ok: true }))
 				} catch (error) {
 					return new Promise((resolve) => resolve({ ok: false }))
 				}
 			},
 			getWeather: async (city) => {
 				try {
-					get().getCityWeather(city);
-					get().getCityForecast(city);
+					get().getCityWeather(city)
+					get().getCityForecast(city)
 
 					return new Promise((resolve) => resolve({ ok: true }))
 				} catch (error) {
@@ -53,7 +60,7 @@ export const useCityWeatherStore = create<CityWeatherState>()(
 						createUrl(FORECAST_URL, city),
 					)
 					if (response) {
-						console.log(response);
+						console.log(response)
 						const obj: ForecastNormalize = getArrayDate(response.list)
 						set({ forecastWeather: obj })
 						return new Promise((resolve) => resolve({ ok: true }))

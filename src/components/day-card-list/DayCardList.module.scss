@@ -1,6 +1,7 @@
 .DayCardList {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   overflow-x: auto;
 }

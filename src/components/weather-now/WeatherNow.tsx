@@ -19,6 +19,7 @@ const WeatherNow = ({ cityWeather }: WeatherNowProps) => {
 	const { name, main, sys, wind, weather } = cityWeather
 	const { sunrise, sunset } = sys
 	const temperature = `${Math.round(main.temp)}℃`
+	
 	return (
 		<div className={classNames(classes.WeatherNow)}>
 			<div className={classNames(classes.location)}>

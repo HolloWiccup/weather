@@ -8,6 +8,8 @@ interface DayCardListProps {
 }
 
 const DayCardList = ({ hourlyWether }: DayCardListProps) => {
+	if(!hourlyWether) return (<div>empty</div>)
+
 	const cards = hourlyWether.map((weather) => (
 		<CardDay key={weather.dt_txt} item={weather} />
 	))

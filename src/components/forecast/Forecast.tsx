@@ -1,35 +1,27 @@
 import { classNames } from '@/helpers/classNames/classNames'
 import classes from './Forecast.module.scss'
 import { DayCardList } from '../day-card-list/DayCardList'
-import { DayTab } from '../day-tab/DayTab'
-import { useState } from 'react'
 import { ForecastNormalize } from '@/models/forecast'
+import { useForecastStore } from './forecastStore'
+import { useEffect, useMemo } from 'react'
+import { ForecastTabs } from '../forecast-tabs/ForecastTabs'
 
 interface ForecastProps {
 	forecastWeather: ForecastNormalize
 }
 
 const Forecast = ({ forecastWeather }: ForecastProps) => {
+	const { activeTab, setActiveTab } = useForecastStore()
 
-	const keys = Object.keys(forecastWeather)
-	const [activeTab, setActiveTab] = useState(keys[0])
+	const keys = useMemo(() => Object.keys(forecastWeather), [forecastWeather])
 
-	const onClickTabHandler = (name: string) => {
-		setActiveTab(name)
-	}
+	useEffect(() => {
+		setActiveTab(keys[0])
+	}, [setActiveTab, keys])
 
 	return (
 		<div className={classNames(classes.Forecast)}>
-			<div className={classNames(classes.tabs)}>
-				{keys.map((item) => (
-					<DayTab
-						active={activeTab === item}
-						onClick={onClickTabHandler}
-						name={item}
-						key={item}
-					/>
-				))}
-			</div>
+			<ForecastTabs keys={keys} onClick={setActiveTab} activeTab={activeTab} />
 			<DayCardList hourlyWether={forecastWeather[activeTab]} />
 		</div>
 	)
