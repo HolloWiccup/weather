@@ -8,7 +8,7 @@ import { useEffect } from 'react'
 import { LastCities } from '../last-citities/LastCities'
 
 const Weather = () => {
-	const { cityWeather, forecastWeather, lastRequestCities, getWeather } =
+	const { forecastWeather, lastRequestCities, getWeather } =
 		useCityWeatherStore()
 	// useEffect(() => {
 	// 	if (cityWeather) getWeather(cityWeather.name)
@@ -16,11 +16,11 @@ const Weather = () => {
 
 	return (
 		<div className={classNames(classes.Weather)}>
-			<WeatherNow cityWeather={cityWeather} />
+			<WeatherNow />
 			<div className={classNames(classes.content)}>
 				<WeatherHeader />
 				{forecastWeather && <Forecast forecastWeather={forecastWeather} />}
-				<LastCities onClick={getWeather} weatherCities={lastRequestCities} />
+				{/* <LastCities onClick={getWeather} weatherCities={lastRequestCities} /> */}
 			</div>
 		</div>
 	)
