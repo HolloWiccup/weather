@@ -1,5 +1,20 @@
 .LastCities {
   display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cities {
+  display: flex;
   gap: 20px;
-  overflow-y: hidden;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
 }

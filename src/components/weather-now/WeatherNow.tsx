@@ -7,17 +7,37 @@ import { WeatherNowDetails } from '../weather-now-details/WeatherNowDetails'
 import { WeatherIcon, WeatherIconSize } from '../weather-icon/WeatherIcon'
 import { useCurrentWeatherStore } from '@/stores/currentWeatherStore'
 import { requestStatus } from '@/helpers/api-helper'
+import { Skeleton } from '../skeleton/Skeleton'
 
 useCurrentWeatherStore.getState().fetchCurrentWeather()
+
+const skeleton = (
+	<div className={classNames(classes.WeatherNow)}>
+		<div className={classNames(classes.location)}>
+			<Skeleton width={30} height={30} />
+			<Skeleton width={100} height={30} />
+		</div>
+		<div className={classNames(classes.info)}>
+			<Skeleton width={200} height={200} />
+			<Skeleton
+				width={70}
+				height={50}
+				className={classNames(classes.temperature)}
+			/>
+		</div>
+		<Skeleton width={200} height={30} />
+		<Skeleton width={200} height={30} />
+		<Skeleton width={200} height={30} />
+		<Skeleton width={200} height={30} />
+		<Skeleton width={200} height={30} />
+	</div>
+)
 
 const WeatherNow = () => {
 	const { currentWeather, status } = useCurrentWeatherStore()
 
-	if (!currentWeather) {
-		return <div className={classNames(classes.WeatherNow)}>
-			{status === requestStatus.FAILED && <p>{requestStatus.FAILED}</p>}
-			{status === requestStatus.LOADING && <p>{requestStatus.LOADING}</p>}
-		</div>
+	if (!currentWeather || status === requestStatus.LOADING) {
+		return <div>{skeleton}</div>
 	}
 
 	const { name, main, sys, wind, weather } = currentWeather
@@ -26,7 +46,6 @@ const WeatherNow = () => {
 
 	return (
 		<div className={classNames(classes.WeatherNow)}>
-			
 			<div className={classNames(classes.location)}>
 				<IconSvg Svg={LocationIcon} />
 				<span>{name}</span>
