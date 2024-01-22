@@ -3,17 +3,13 @@ import LocationIcon from '@/assets/icons/location-icon.svg'
 import { classNames } from '@/helpers/classNames/classNames'
 import { IconSvg } from '../IconSvg/IconSvg'
 import { SunsetSunrise } from '../sunset-sunrise/SunsetSunrise'
-// import { CityWeather } from '@/models/weather'
 import { WeatherNowDetails } from '../weather-now-details/WeatherNowDetails'
 import { WeatherIcon, WeatherIconSize } from '../weather-icon/WeatherIcon'
 import { useCurrentWeatherStore } from '@/stores/currentWeatherStore'
 import { requestStatus } from '@/helpers/api-helper'
 
-// interface WeatherNowProps {
-// 	cityWeather: CityWeather | undefined
-// }
+useCurrentWeatherStore.getState().fetchCurrentWeather()
 
-// const WeatherNow = ({ cityWeather }: WeatherNowProps) => {
 const WeatherNow = () => {
 	const { currentWeather, status } = useCurrentWeatherStore()
 

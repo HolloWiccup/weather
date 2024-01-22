@@ -1,17 +1,14 @@
 import { classNames } from '@/helpers/classNames/classNames'
 import classes from './LastCities.module.scss'
 import { CityCard } from '../city-card/CityCard'
+import { useFetchFullWeather } from '@/hooks/useFetchFullWeather'
 
-interface LastCitiesProps {
-	weatherCities: string[]
-	onClick: (name: string) => void
-}
+const LastCities = () => {
+	const { fetchFullWeather, lastCities } = useFetchFullWeather()
+	if (!lastCities.length) return <div>empty</div>
 
-const LastCities = ({ weatherCities, onClick }: LastCitiesProps) => {
-	if (!weatherCities.length) return <div>empty</div>
-  
-	const cities = weatherCities.map((city) => (
-		<CityCard onClick={onClick} key={city} name={city} />
+	const cities = lastCities.map((city) => (
+		<CityCard onClick={fetchFullWeather} key={city} name={city} />
 	))
 
 	return <div className={classNames(classes.LastCities)}>{cities}</div>

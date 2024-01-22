@@ -1,11 +1,11 @@
 import { create } from 'zustand'
 
-interface ForecastState {
+interface ForecastTabState {
 	activeTab: string
 	setActiveTab: (tab: string) => void
 }
 
-export const useForecastStore = create<ForecastState>()((set) => ({
+export const useForecastTabStore = create<ForecastTabState>()((set) => ({
 	activeTab: '',
 	setActiveTab(tab) {
 		set({ activeTab: tab })

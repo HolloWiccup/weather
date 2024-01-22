@@ -2,21 +2,17 @@ import { classNames } from '@/helpers/classNames/classNames'
 import SearchIcon from '@/assets/icons/search-icon.svg'
 import classes from './SearchForm.module.scss'
 import { IconSvg } from '@/components/IconSvg/IconSvg'
-import { useSearchStore } from './searchFormStore'
+import { useState } from 'react'
 import { useCurrentWeatherStore } from '@/stores/currentWeatherStore'
-import { useEffect } from 'react'
-import { requestStatus } from '@/helpers/api-helper'
-// import { requestStatus } from '@/helpers/api-helper'
+import { useForecastStore } from '@/stores/forecastStore'
+
+const DEFAULT_VALUE = ''
 
 const SearchForm = () => {
-	const { value, setValue, clearForm } = useSearchStore(state => state)
-	const { fetchCurrentWeather, status } = useCurrentWeatherStore(
-		(state) => state,
-	)
+	const [value, setValue] = useState(DEFAULT_VALUE)
 
-	useEffect(() => {
-		if (status === requestStatus.SUCCEEDED) clearForm()
-	}, [status, clearForm])
+	const { fetchCurrentWeather } = useCurrentWeatherStore((state) => state)
+	const { fetchForecastWeather } = useForecastStore((state) => state)
 
 	const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setValue(e.target.value)
@@ -25,6 +21,8 @@ const SearchForm = () => {
 	const onSearchHandler = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		fetchCurrentWeather(value)
+		fetchForecastWeather(value)
+		setValue(DEFAULT_VALUE)
 	}
 
 	return (

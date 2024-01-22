@@ -1,5 +1,6 @@
 import { classNames } from '@/helpers/classNames/classNames'
 import classes from './ForecastTab.module.scss'
+import { memo } from 'react'
 
 interface ForecastTabProps {
 	onClick: (name: string) => void
@@ -7,10 +8,9 @@ interface ForecastTabProps {
 	active: boolean
 }
 
-const ForecastTab = ({ onClick, name, active }: ForecastTabProps) => {
-	
+const ForecastTab = memo(({ onClick, name, active }: ForecastTabProps) => {
 	const onClickHandler = () => {
-		onClick(name)
+		if (!active) onClick(name)
 	}
 
 	return (
@@ -21,6 +21,6 @@ const ForecastTab = ({ onClick, name, active }: ForecastTabProps) => {
 			{name}
 		</button>
 	)
-}
+})
 
 export { ForecastTab }

@@ -8,13 +8,14 @@
 
   &:focus {
     outline: none;
+    border-bottom: 1px solid blue;
   }
 }
 
 .form {
   width: fit-content;
   display: flex;
-  padding: 5px;
+  padding: 5px 10px;
   border-radius: 16px;
   background: var(--color-gray-light);
   gap: 10px;

@@ -31,6 +31,7 @@ module.exports = {
   rules: {
     'object-curly-spacing': ["error", "always"],
     'prettier/prettier': "off",
+    "react/display-name": "off",
     'react/react-in-jsx-scope': 'off',
     'react-refresh/only-export-components': [
       'warn',
