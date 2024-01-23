@@ -10,7 +10,7 @@ const LastCities = () => {
 	if (!lastCities.length) return <div>empty</div>
 
 	const disableIncrement = index >= lastCities.length - 2
-	const disableDecrement = index <= 0
+	const disableDecrement = index <= 1
 
 	const cities = lastCities
 		.slice(index, index + 2)
@@ -19,11 +19,11 @@ const LastCities = () => {
 		))
 
 	const incrementIndex = () => {
-		if (!disableIncrement) setIndex(index + 1)
+		if (!disableIncrement) setIndex(index + 2)
 	}
 
 	const decrementIndex = () => {
-		if (!disableDecrement) setIndex(index - 1)
+		if (!disableDecrement) setIndex(index - 2)
 	}
 
 	return (
@@ -32,10 +32,10 @@ const LastCities = () => {
 				<span>Последние опрашиваемые города</span>
 				<div className={classNames(classes.buttons)}>
 					<button onClick={decrementIndex} disabled={disableDecrement}>
-						⟵
+						<span>{'⟵'}</span>
 					</button>
 					<button onClick={incrementIndex} disabled={disableIncrement}>
-						⟶
+						<span>{'⟶'}</span>
 					</button>
 				</div>
 			</div>

@@ -42,7 +42,7 @@ export const getDate = (seconds: number) => {
 export const getForecastNormalize = (array: ForecastItem[]) => {
 	const obj: ForecastNormalize = {}
 	array.forEach((item) => {
-		const key = item.dt_txt.split(' ')[0]
+		const key = item.dt_txt.replace(/\d+[-](\d+)[-](\d+)\s.+/, '$2 $1')
 		if (!obj[key]) obj[key] = []
 		obj[key].push(item)
 	})

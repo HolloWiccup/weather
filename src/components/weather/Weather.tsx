@@ -1,19 +1,25 @@
 import { WeatherHeader } from '../weather-header/WeatherHeader'
-import { WeatherNow } from '../weather-now/WeatherNow'
+import { CurrentWeather } from '../weather-now/CurrentWeather'
 import { classNames } from '@/helpers/classNames/classNames'
 import classes from './Weather.module.scss'
 import { Forecast } from '../forecast/Forecast'
 import { LastCities } from '../last-citities/LastCities'
+import { Paper } from '../Paper/Paper'
 
 const Weather = () => {
-
 	return (
 		<div className={classNames(classes.Weather)}>
-			<WeatherNow />
+				<CurrentWeather />
 			<div className={classNames(classes.content)}>
-				<WeatherHeader />
-				<Forecast />
-				<LastCities />
+				<Paper>
+					<WeatherHeader />
+				</Paper>
+				<Paper>
+					<Forecast />
+				</Paper>
+				<Paper>
+					<LastCities />
+				</Paper>
 			</div>
 		</div>
 	)
