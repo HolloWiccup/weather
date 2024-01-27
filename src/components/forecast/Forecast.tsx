@@ -1,26 +1,42 @@
-import { classNames } from '@/helpers/classNames/classNames'
-import classes from './Forecast.module.scss'
 import { DayCardList } from '../day-card-list/DayCardList'
-import { useForecastTabStore } from '../../stores/forecastTabStore'
-import { useEffect, useMemo } from 'react'
 import { ForecastTabs } from '../forecast-tabs/ForecastTabs'
-import { useForecastStore } from '@/stores/forecastStore'
+import { Paper } from '../paper/Paper'
+import { HStack, VStack } from '../stack'
+import { useWeatherStore } from '@/stores/weatherStore'
+import { Skeleton } from '../skeleton/Skeleton'
+import { useTab } from '@/hooks/useTab'
 
 const Forecast = () => {
-	const { activeTab, setActiveTab } = useForecastTabStore((state) => state)
-	const { forecast } = useForecastStore((state) => state)
+	const { forecastWeather, loading } = useWeatherStore((state) => state)
+	const { activeTab, setActiveTab, keys } = useTab(forecastWeather)
 
-	const keys = useMemo(() => Object.keys(forecast), [forecast])
-
-	useEffect(() => {
-		setActiveTab(keys[0])
-	}, [setActiveTab, keys])
+	if (!forecastWeather || loading) {
+		return (
+			<Paper max>
+				<VStack gap="8">
+					<Skeleton />
+					<HStack gap='8'>
+						<Skeleton width={75} height={150} />
+						<Skeleton width={75} height={150} />
+						<Skeleton width={75} height={150} />
+						<Skeleton width={75} height={150} />
+					</HStack>
+				</VStack>
+			</Paper>
+		)
+	}
 
 	return (
-		<div className={classNames(classes.Forecast)}>
-			<ForecastTabs keys={keys} onClick={setActiveTab} activeTab={activeTab} />
-			<DayCardList hourlyWether={forecast[activeTab]} />
-		</div>
+		<Paper max>
+			<VStack gap="8" max>
+				<ForecastTabs
+					keys={keys}
+					onClick={setActiveTab}
+					activeTab={activeTab}
+				/>
+				<DayCardList hourlyWether={forecastWeather[activeTab]} />
+			</VStack>
+		</Paper>
 	)
 }
 

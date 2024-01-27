@@ -1,4 +1,5 @@
 import { ForecastItem, ForecastNormalize } from '@/models/forecast'
+import { CityWeather, WeatherNormalize } from '@/models/weather'
 
 const API_KEY = 'aefaf2ee38ea734b4f10c61ceafcc3cc'
 
@@ -18,11 +19,11 @@ const monthName = [
 	'Дек',
 ]
 
-export const createUrl = (url: string, city: string) => {
+const createUrl = (url: string, city: string) => {
 	return `${url}?q=${city}&APPID=${API_KEY}&units=metric&lang=ru`
 }
 
-export const getTime = (seconds: number) => {
+const getTime = (seconds: number) => {
 	const date = new Date(seconds * 1000)
 	const minutes = date.getMinutes().toString().padStart(2, '0')
 	const hours = date.getHours().toString().padStart(2, '0')
@@ -30,7 +31,7 @@ export const getTime = (seconds: number) => {
 	return `${hours}:${minutes}`
 }
 
-export const getDate = (seconds: number) => {
+const getDate = (seconds: number) => {
 	const date = new Date(seconds * 1000)
 	const dayWeek = nameDayWeek[date.getDay()]
 	const day = date.getDate()
@@ -39,12 +40,35 @@ export const getDate = (seconds: number) => {
 	return `${dayWeek}, ${day} ${month} ${year}`
 }
 
-export const getForecastNormalize = (array: ForecastItem[]) => {
-	const obj: ForecastNormalize = {}
+const getWeatherNormalize = (weather: CityWeather) => {
+	const weatherNormalize: WeatherNormalize = {
+		city: weather.name,
+		date: weather.dt,
+		sunrise: weather.sys.sunrise,
+		sunset: weather.sys.sunset,
+		icon: weather.weather[0].icon,
+		temperature: weather.main.temp,
+		feels: weather.main.feels_like,
+		humidity: weather.main.humidity,
+		wind: weather.wind.speed,
+	}
+	return weatherNormalize
+}
+
+const getForecastNormalize = (array: ForecastItem[]) => {
+	const forecast: ForecastNormalize = {}
 	array.forEach((item) => {
 		const key = item.dt_txt.replace(/\d+[-](\d+)[-](\d+)\s.+/, '$2 $1')
-		if (!obj[key]) obj[key] = []
-		obj[key].push(item)
+		if (!forecast[key]) forecast[key] = []
+		forecast[key].push(item)
 	})
-	return obj
+	return forecast
+}
+
+export {
+	createUrl,
+	getDate,
+	getTime,
+	getForecastNormalize,
+	getWeatherNormalize,
 }

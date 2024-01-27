@@ -22,7 +22,7 @@ const WeatherIcon = (props: WeatherIconProps) => {
 
 	return (
 		<div className={classNames(classes.WeatherIcon, {}, [classes[size]])}>
-			{SvgIcon ? (
+			{(SvgIcon) ? (
 				<SvgIcon className={className} />
 			) : (
 				<Skeleton className={className} />

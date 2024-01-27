@@ -3,16 +3,13 @@ import SearchIcon from '@/assets/icons/search-icon.svg'
 import classes from './SearchForm.module.scss'
 import { IconSvg } from '@/components/IconSvg/IconSvg'
 import { useState } from 'react'
-import { useCurrentWeatherStore } from '@/stores/currentWeatherStore'
-import { useForecastStore } from '@/stores/forecastStore'
+import { useWeatherStore } from '@/stores/weatherStore'
 
 const DEFAULT_VALUE = ''
 
 const SearchForm = () => {
 	const [value, setValue] = useState(DEFAULT_VALUE)
-
-	const { fetchCurrentWeather } = useCurrentWeatherStore((state) => state)
-	const { fetchForecastWeather } = useForecastStore((state) => state)
+	const { fetchWeather } = useWeatherStore((state) => state)
 
 	const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setValue(e.target.value)
@@ -20,8 +17,7 @@ const SearchForm = () => {
 
 	const onSearchHandler = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		fetchCurrentWeather(value)
-		fetchForecastWeather(value)
+		fetchWeather(value)
 		setValue(DEFAULT_VALUE)
 	}
 

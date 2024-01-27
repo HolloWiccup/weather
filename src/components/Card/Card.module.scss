@@ -1,0 +1,9 @@
+.Card {
+  display: flex;
+  padding: 5px;
+  background: var(--color-gray-light);
+}
+
+.vertical {
+  flex-direction: column;
+}

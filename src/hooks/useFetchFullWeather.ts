@@ -1,9 +1,12 @@
+import { requestStatus } from '@/helpers/api-helper'
 import { useCurrentWeatherStore } from '@/stores/currentWeatherStore'
 import { useForecastStore } from '@/stores/forecastStore'
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
+import { toast } from 'react-toastify'
 
 const useFetchFullWeather = () => {
-	const { fetchCurrentWeather, lastCities } = useCurrentWeatherStore((state) => state)
+	const { fetchCurrentWeather, lastCities, error, status } =
+		useCurrentWeatherStore((state) => state)
 	const { fetchForecastWeather } = useForecastStore((state) => state)
 
 	const fetchFullWeather = useCallback((city?: string) => {
@@ -11,7 +14,19 @@ const useFetchFullWeather = () => {
 		fetchForecastWeather(city)
 	}, [])
 
+	useEffect(() => {
+		switch (status) {
+			case requestStatus.FAILED:
+				toast.error(error)
+				break;
+			case requestStatus.SUCCEEDED:
+				toast.success('succeed')
+				break;
+		}
+
+	}, [error, status])
+
 	return { fetchFullWeather, lastCities }
 }
 
-export { useFetchFullWeather,  }
+export { useFetchFullWeather }

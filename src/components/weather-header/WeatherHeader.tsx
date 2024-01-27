@@ -1,31 +1,36 @@
 import { classNames } from '@/helpers/classNames/classNames'
 import classes from './WeatherHeader.module.scss'
 import { SearchForm } from '../search-form/SearchForm'
-import { useCurrentWeatherStore } from '@/stores/currentWeatherStore'
 import { getDate, getTime } from '@/helpers/helpers'
+import { Paper } from '../paper/Paper'
+import { useWeatherStore } from '@/stores/weatherStore'
 
 const WeatherHeader = () => {
-	const { currentWeather } = useCurrentWeatherStore((state) => state)
+	const { currentWeather } = useWeatherStore((state) => state)
 
 	if (!currentWeather)
 		return (
 			<div className={classNames(classes.WeatherHeader)}>
-				<SearchForm />
+				<Paper max>
+					<SearchForm />
+				</Paper>
 			</div>
 		)
 
-	const { dt } = currentWeather
-	const time = getTime(dt)
-	const date = getDate(dt)
-
 	return (
-		<div className={classNames(classes.WeatherHeader)}>
-			<div>
-				<p className={classNames(classes.time)}>{time}</p>
-				<p className={classNames(classes.date)}>{date}</p>
+		<Paper max>
+			<div className={classNames(classes.WeatherHeader)}>
+				<div>
+					<p className={classNames(classes.time)}>
+						{getTime(currentWeather.date)}
+					</p>
+					<p className={classNames(classes.date)}>
+						{getDate(currentWeather.date)}
+					</p>
+				</div>
+				<SearchForm />
 			</div>
-			<SearchForm />
-		</div>
+		</Paper>
 	)
 }
 

@@ -1,6 +1,7 @@
 import { classNames } from '@/helpers/classNames/classNames'
 import classes from './ForecastTabs.module.scss'
 import { ForecastTab } from '../forecast-tab/ForecastTab'
+import { HStack } from '../stack'
 
 interface ForecastTabs {
 	keys: string[]
@@ -19,7 +20,11 @@ const ForecastTabs = ({ keys, onClick, activeTab }: ForecastTabs) => {
 		/>
 	))
 
-	return <div className={classNames(classes.ForecastTabs)}>{tabs}</div>
+	return (
+		<HStack max className={classNames(classes.ForecastTabs)} >
+			{tabs}
+		</HStack>
+	)
 }
 
 export { ForecastTabs }
