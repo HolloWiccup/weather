@@ -3,7 +3,7 @@ import { classNames } from '@/helpers/classNames'
 import { useDynamicSVGImport } from '@/hooks/useDynamicSvgImport'
 import { Skeleton } from '../skeleton/Skeleton'
 
-export enum WeatherIconSize {
+enum WeatherIconSize {
 	BIG = 'big',
 	MEDIUM = 'medium',
 	SMALL = 'small',
@@ -22,7 +22,7 @@ const WeatherIcon = (props: WeatherIconProps) => {
 
 	return (
 		<div className={classNames(classes.WeatherIcon, {}, [classes[size]])}>
-			{(SvgIcon) ? (
+			{SvgIcon ? (
 				<SvgIcon className={className} />
 			) : (
 				<Skeleton className={className} />
@@ -31,4 +31,4 @@ const WeatherIcon = (props: WeatherIconProps) => {
 	)
 }
 
-export { WeatherIcon }
+export { WeatherIcon, WeatherIconSize }

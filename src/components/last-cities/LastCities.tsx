@@ -10,8 +10,6 @@ const LastCities = () => {
 	const [index, setIndex] = useState(0)
 	const { fetchWeather, lastCities } = useWeatherStore((state) => state)
 
-	// if (!lastCities.length) return <div>empty</div>
-
 	const disableIncrement = index >= lastCities.length - 2
 	const disableDecrement = index <= 1
 

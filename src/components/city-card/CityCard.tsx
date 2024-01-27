@@ -3,7 +3,7 @@ import { CityWeather } from '@/models/weather'
 import { WeatherIcon } from '../weather-icon/WeatherIcon'
 import { fetchWeather } from '@/helpers/api-helper'
 import { Skeleton } from '../skeleton/Skeleton'
-import { Card } from '@/components/card/Card'
+import { Card } from '../card/Card'
 
 interface CityCardProps {
 	name: string
