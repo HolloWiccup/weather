@@ -1,9 +1,9 @@
-import { classNames } from '@/helpers/classNames/classNames'
+import { classNames } from '@/helpers/classNames'
 import SearchIcon from '@/assets/icons/search-icon.svg'
 import classes from './SearchForm.module.scss'
-import { IconSvg } from '@/components/IconSvg/IconSvg'
 import { useState } from 'react'
 import { useWeatherStore } from '@/stores/weatherStore'
+import { IconSvg } from '../icon-svg/IconSvg'
 
 const DEFAULT_VALUE = ''
 

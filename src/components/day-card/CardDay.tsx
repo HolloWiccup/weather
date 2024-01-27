@@ -1,4 +1,4 @@
-import { classNames } from '@/helpers/classNames/classNames'
+import { classNames } from '@/helpers/classNames'
 import classes from './CardDay.module.scss'
 import {
 	WeatherIcon,

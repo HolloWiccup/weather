@@ -1,10 +1,11 @@
-import { classNames } from '@/helpers/classNames/classNames'
+import { classNames } from '@/helpers/classNames'
 import classes from './CityCard.module.scss'
 import { useEffect, useState } from 'react'
 import { CityWeather } from '@/models/weather'
 import { WeatherIcon } from '../weather-icon/WeatherIcon'
 import { fetchWeather } from '@/helpers/api-helper'
 import { Skeleton } from '../skeleton/Skeleton'
+import { Card } from '../Card/Card'
 
 interface CityCardProps {
 	name: string
@@ -50,7 +51,7 @@ const CityCard = ({ name, onClick }: CityCardProps) => {
 		)
 	}
 
-	return <div className={classNames(classes.CityCard)}>{content}</div>
+	return <Card>{content}</Card>
 }
 
 export { CityCard }

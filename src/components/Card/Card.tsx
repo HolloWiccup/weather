@@ -1,4 +1,4 @@
-import { classNames } from '@/helpers/classNames/classNames'
+import { classNames } from '@/helpers/classNames'
 import classes from './Card.module.scss'
 import { ReactNode } from 'react'
 

@@ -1,4 +1,4 @@
-import { classNames } from '@/helpers/classNames/classNames'
+import { classNames } from '@/helpers/classNames'
 import classes from './DayCardList.module.scss'
 import { ForecastItem } from '@/models/forecast'
 import { CardDay } from '../day-card/CardDay'

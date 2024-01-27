@@ -1,6 +1,6 @@
 import classes from './WeatherIcon.module.scss'
-import { classNames } from '@/helpers/classNames/classNames'
-import { useDynamicSVGImport } from '@/hooks/useDynamicSvgImport/useDynamicSvgImport'
+import { classNames } from '@/helpers/classNames'
+import { useDynamicSVGImport } from '@/hooks/useDynamicSvgImport'
 import { Skeleton } from '../skeleton/Skeleton'
 
 export enum WeatherIconSize {

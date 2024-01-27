@@ -1,4 +1,4 @@
-import { classNames } from '@/helpers/classNames/classNames'
+import { classNames } from '@/helpers/classNames'
 import classes from './ForecastTabs.module.scss'
 import { ForecastTab } from '../forecast-tab/ForecastTab'
 import { HStack } from '../stack'

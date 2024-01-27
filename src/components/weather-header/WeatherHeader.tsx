@@ -1,4 +1,4 @@
-import { classNames } from '@/helpers/classNames/classNames'
+import { classNames } from '@/helpers/classNames'
 import classes from './WeatherHeader.module.scss'
 import { SearchForm } from '../search-form/SearchForm'
 import { getDate, getTime } from '@/helpers/helpers'

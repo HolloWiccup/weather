@@ -1,21 +1,19 @@
 import { WeatherHeader } from '../weather-header/WeatherHeader'
-import { CurrentWeather } from '../current-weather/CurrentWeather'
-import { classNames } from '@/helpers/classNames/classNames'
-import classes from './Weather.module.scss'
 import { Forecast } from '../forecast/Forecast'
-import { LastCities } from '../last-citities/LastCities'
-import { VStack } from '../stack'
+import { LastCities } from '../last-cities/LastCities'
+import { HStack, VStack } from '../stack'
+import { CurrentWeather } from '../current-weather'
 
 const Weather = () => {
 	return (
-		<div className={classNames(classes.Weather)}>
+		<HStack gap="16" align='start'>
 			<CurrentWeather />
-			<VStack gap='16'>
+			<VStack gap="16">
 				<WeatherHeader />
 				<Forecast />
 				<LastCities />
 			</VStack>
-		</div>
+		</HStack>
 	)
 }
 

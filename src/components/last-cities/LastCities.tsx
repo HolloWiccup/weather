@@ -1,4 +1,4 @@
-import { classNames } from '@/helpers/classNames/classNames'
+import { classNames } from '@/helpers/classNames'
 import classes from './LastCities.module.scss'
 import { CityCard } from '../city-card/CityCard'
 import { useState } from 'react'
@@ -9,7 +9,8 @@ import { HStack, VStack } from '../stack'
 const LastCities = () => {
 	const [index, setIndex] = useState(0)
 	const { fetchWeather, lastCities } = useWeatherStore((state) => state)
-	if (!lastCities.length) return <div>empty</div>
+
+	// if (!lastCities.length) return <div>empty</div>
 
 	const disableIncrement = index >= lastCities.length - 2
 	const disableDecrement = index <= 1
@@ -27,10 +28,10 @@ const LastCities = () => {
 	}
 
 	return (
-		<Paper>
+		<Paper max>
 			<VStack gap="8">
-				<HStack justify='between' max>
-					<span>Последние опрашиваемые города</span>
+				<HStack justify="between" max>
+					<span>Запрошенные города</span>
 					<div className={classNames(classes.buttons)}>
 						<button onClick={decrementIndex} disabled={disableDecrement}>
 							<span>{'⟵'}</span>

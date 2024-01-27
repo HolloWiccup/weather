@@ -22,7 +22,7 @@ export function useDynamicSVGImport(
     setError(false);
     const importIcon = async (): Promise<void> => {
       try {
-        ImportedIconRef.current = (await import(`../../assets/icons/conditions/${name}.svg`)).default
+        ImportedIconRef.current = (await import(`../assets/icons/conditions/${name}.svg`)).default
         onCompleted?.(name, ImportedIconRef.current);
       } catch (err) {
         onError?.();

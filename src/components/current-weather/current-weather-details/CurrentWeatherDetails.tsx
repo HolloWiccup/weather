@@ -1,14 +1,14 @@
-import { classNames } from '@/helpers/classNames/classNames'
+import { classNames } from '@/helpers/classNames'
 import classes from './CurrentWeatherDetails.module.scss'
-import { Paper } from '../paper/Paper'
 import { useWeatherStore } from '@/stores/weatherStore'
-import { Skeleton } from '../skeleton/Skeleton'
 import SunriseIcon from '@/assets/icons/sunrise-icon.svg'
 import SunsetIcon from '@/assets/icons/sunset-icon.svg'
-import { IconSvg } from '../IconSvg/IconSvg'
 import { getTime } from '@/helpers/helpers'
 import { WeatherDetailsItem } from '../weather-details-item/WeatherDetailsItem'
-import { VStack } from '../stack'
+import { IconSvg } from '@/components/icon-svg/IconSvg'
+import { Paper } from '@/components/paper/Paper'
+import { Skeleton } from '@/components/skeleton/Skeleton'
+import { VStack } from '@/components/stack'
 
 const skeleton = (
 	<Paper max>

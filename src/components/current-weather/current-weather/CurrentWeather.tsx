@@ -1,16 +1,13 @@
-// import classes from './CurrentWeather.module.scss'
-// import { classNames } from '@/helpers/classNames/classNames'
 import { CurrentWeatherInfo } from '../current-weather-info/CurrentWeatherInfo'
 import { CurrentWeatherDetails } from '../current-weather-details/CurrentWeatherDetails'
-import { VStack } from '../stack'
+import { VStack } from '@/components/stack'
 
 const CurrentWeather = () => {
 	return (
-		<VStack gap='16' max>
+		<VStack gap="16">
 			<CurrentWeatherInfo />
 			<CurrentWeatherDetails />
 		</VStack>
-			
 	)
 }
 

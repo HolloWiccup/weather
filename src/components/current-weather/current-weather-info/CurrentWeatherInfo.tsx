@@ -1,12 +1,15 @@
-import { classNames } from '@/helpers/classNames/classNames'
+import { classNames } from '@/helpers/classNames'
 import classes from './CurrentWeatherInfo.module.scss'
-import { IconSvg } from '../IconSvg/IconSvg'
-import { Paper } from '../paper/Paper'
-import { WeatherIcon, WeatherIconSize } from '../weather-icon/WeatherIcon'
 import LocationIcon from '@/assets/icons/location-icon.svg'
-import { Skeleton } from '../skeleton/Skeleton'
+import { IconSvg } from '@/components/icon-svg/IconSvg'
+import { Paper } from '@/components/paper/Paper'
+import { Skeleton } from '@/components/skeleton/Skeleton'
+import { VStack, HStack } from '@/components/stack'
+import {
+	WeatherIcon,
+	WeatherIconSize,
+} from '@/components/weather-icon/WeatherIcon'
 import { useWeatherStore } from '@/stores/weatherStore'
-import { HStack, VStack } from '../stack'
 
 const skeleton = (
 	<Paper>
