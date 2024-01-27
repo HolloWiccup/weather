@@ -1,10 +1,10 @@
 import { classNames } from '@/helpers/classNames'
 import classes from './CurrentWeatherInfo.module.scss'
 import LocationIcon from '@/assets/icons/location-icon.svg'
-import { IconSvg } from '@/components/icon-svg/IconSvg'
-import { Paper } from '@/components/paper/Paper'
-import { Skeleton } from '@/components/skeleton/Skeleton'
-import { VStack, HStack } from '@/components/stack'
+import { IconSvg } from '@/components/ui/icon-svg/IconSvg'
+import { Paper } from '@/components/ui/paper/Paper'
+import { Skeleton } from '@/components/ui/skeleton/Skeleton'
+import { VStack, HStack } from '@/components/ui/stack'
 import {
 	WeatherIcon,
 	WeatherIconSize,

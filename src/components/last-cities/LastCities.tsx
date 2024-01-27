@@ -3,8 +3,8 @@ import classes from './LastCities.module.scss'
 import { CityCard } from '../city-card/CityCard'
 import { useState } from 'react'
 import { useWeatherStore } from '@/stores/weatherStore'
-import { Paper } from '../paper/Paper'
-import { HStack, VStack } from '../stack'
+import { Paper } from '../ui/paper/Paper'
+import { HStack, VStack } from '../ui/stack'
 
 const LastCities = () => {
 	const [index, setIndex] = useState(0)

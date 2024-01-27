@@ -5,10 +5,10 @@ import SunriseIcon from '@/assets/icons/sunrise-icon.svg'
 import SunsetIcon from '@/assets/icons/sunset-icon.svg'
 import { getTime } from '@/helpers/helpers'
 import { WeatherDetailsItem } from '../weather-details-item/WeatherDetailsItem'
-import { IconSvg } from '@/components/icon-svg/IconSvg'
-import { Paper } from '@/components/paper/Paper'
-import { Skeleton } from '@/components/skeleton/Skeleton'
-import { VStack } from '@/components/stack'
+import { IconSvg } from '@/components/ui/icon-svg/IconSvg'
+import { Paper } from '@/components/ui/paper/Paper'
+import { Skeleton } from '@/components/ui/skeleton/Skeleton'
+import { VStack } from '@/components/ui/stack'
 
 const skeleton = (
 	<Paper max>

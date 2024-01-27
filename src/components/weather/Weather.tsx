@@ -1,7 +1,7 @@
 import { WeatherHeader } from '../weather-header/WeatherHeader'
 import { Forecast } from '../forecast/Forecast'
 import { LastCities } from '../last-cities/LastCities'
-import { HStack, VStack } from '../stack'
+import { HStack, VStack } from '../ui/stack'
 import { CurrentWeather } from '../current-weather'
 
 const Weather = () => {

@@ -3,7 +3,7 @@ import SearchIcon from '@/assets/icons/search-icon.svg'
 import classes from './SearchForm.module.scss'
 import { useState } from 'react'
 import { useWeatherStore } from '@/stores/weatherStore'
-import { IconSvg } from '../icon-svg/IconSvg'
+import { IconSvg } from '../ui/icon-svg/IconSvg'
 
 const DEFAULT_VALUE = ''
 

@@ -1,13 +1,13 @@
 import { classNames } from '@/helpers/classNames'
 import classes from './DayCard.module.scss'
-import { Card } from '@/components/card/Card'
+import { Card } from '@/components/ui/card/Card'
 import {
 	WeatherIcon,
 	WeatherIconSize,
 } from '@/components/weather-icon/WeatherIcon'
 import { ForecastItem } from '@/models/forecast'
 import { getTime } from '@/helpers/helpers'
-import { VStack } from '../stack'
+import { VStack } from '../ui/stack'
 
 interface CardDayProps {
 	item: ForecastItem

@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import { CityWeather } from '@/models/weather'
 import { WeatherIcon } from '../weather-icon/WeatherIcon'
 import { fetchWeather } from '@/helpers/api-helper'
-import { Skeleton } from '../skeleton/Skeleton'
-import { Card } from '../card/Card'
+import { Skeleton } from '../ui/skeleton/Skeleton'
+import { Card } from '../ui/card/Card'
 
 interface CityCardProps {
 	name: string

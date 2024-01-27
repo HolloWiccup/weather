@@ -1,8 +1,8 @@
 import { classNames } from '@/helpers/classNames'
 import classes from './WeatherDetailsItem.module.scss'
 import { ReactNode } from 'react'
-import { Card } from '@/components/card/Card'
-import { HStack } from '@/components/stack'
+import { Card } from '@/components/ui/card/Card'
+import { HStack } from '@/components/ui/stack'
 
 interface WeatherDetailsItemProps {
 	children: ReactNode

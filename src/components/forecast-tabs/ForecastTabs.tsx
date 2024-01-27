@@ -1,7 +1,7 @@
 import { classNames } from '@/helpers/classNames'
 import classes from './ForecastTabs.module.scss'
 import { ForecastTab } from '../forecast-tab/ForecastTab'
-import { HStack } from '../stack'
+import { HStack } from '../ui/stack'
 
 interface ForecastTabs {
 	keys: string[]

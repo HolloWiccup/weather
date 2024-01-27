@@ -1,6 +1,6 @@
 import { CurrentWeatherInfo } from '../current-weather-info/CurrentWeatherInfo'
 import { CurrentWeatherDetails } from '../current-weather-details/CurrentWeatherDetails'
-import { VStack } from '@/components/stack'
+import { VStack } from '@/components/ui/stack'
 
 const CurrentWeather = () => {
 	return (

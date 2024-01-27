@@ -1,9 +1,9 @@
 import { DayCardList } from '../day-card-list/DayCardList'
 import { ForecastTabs } from '../forecast-tabs/ForecastTabs'
-import { Paper } from '../paper/Paper'
-import { HStack, VStack } from '../stack'
+import { Paper } from '../ui/paper/Paper'
+import { HStack, VStack } from '../ui/stack'
 import { useWeatherStore } from '@/stores/weatherStore'
-import { Skeleton } from '../skeleton/Skeleton'
+import { Skeleton } from '../ui/skeleton/Skeleton'
 import { useTab } from '@/hooks/useTab'
 
 const Forecast = () => {

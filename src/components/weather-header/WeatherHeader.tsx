@@ -2,7 +2,7 @@ import { classNames } from '@/helpers/classNames'
 import classes from './WeatherHeader.module.scss'
 import { SearchForm } from '../search-form/SearchForm'
 import { getDate, getTime } from '@/helpers/helpers'
-import { Paper } from '../paper/Paper'
+import { Paper } from '../ui/paper/Paper'
 import { useWeatherStore } from '@/stores/weatherStore'
 
 const WeatherHeader = () => {
