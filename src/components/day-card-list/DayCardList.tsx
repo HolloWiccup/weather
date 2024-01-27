@@ -1,7 +1,7 @@
 import { classNames } from '@/helpers/classNames'
 import classes from './DayCardList.module.scss'
 import { ForecastItem } from '@/models/forecast'
-import { CardDay } from '../day-card/CardDay'
+import { DayCard } from '../day-card/DayCard'
 
 interface DayCardListProps {
 	hourlyWether: ForecastItem[]
@@ -11,7 +11,7 @@ const DayCardList = ({ hourlyWether }: DayCardListProps) => {
 	if(!hourlyWether) return (<div>empty</div>)
 
 	const cards = hourlyWether.map((weather) => (
-		<CardDay key={weather.dt_txt} item={weather} />
+		<DayCard key={weather.dt_txt} item={weather} />
 	))
 
 	return (

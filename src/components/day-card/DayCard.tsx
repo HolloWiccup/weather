@@ -1,19 +1,19 @@
 import { classNames } from '@/helpers/classNames'
-import classes from './CardDay.module.scss'
+import classes from './DayCard.module.scss'
+import { Card } from '@/components/card/Card'
 import {
 	WeatherIcon,
 	WeatherIconSize,
 } from '@/components/weather-icon/WeatherIcon'
 import { ForecastItem } from '@/models/forecast'
 import { getTime } from '@/helpers/helpers'
-import { Card } from '../Card/Card'
 import { VStack } from '../stack'
 
 interface CardDayProps {
 	item: ForecastItem
 }
 
-const CardDay = ({ item }: CardDayProps) => {
+const DayCard = ({ item }: CardDayProps) => {
 	const { dt, main, weather } = item
 
 	return (
@@ -29,4 +29,4 @@ const CardDay = ({ item }: CardDayProps) => {
 	)
 }
 
-export { CardDay }
+export { DayCard }
