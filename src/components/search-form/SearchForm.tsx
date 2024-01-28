@@ -17,8 +17,11 @@ const SearchForm = () => {
 
 	const onSearchHandler = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		fetchWeather(value)
-		setValue(DEFAULT_VALUE)
+		const textValue = value.trim()
+		if (!textValue) return
+		fetchWeather(textValue).then((resolve) => {
+			if (resolve.ok) setValue(DEFAULT_VALUE)
+		})
 	}
 
 	return (

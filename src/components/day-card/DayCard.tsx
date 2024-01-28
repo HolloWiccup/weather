@@ -1,6 +1,5 @@
 import { classNames } from '@/helpers/classNames'
 import classes from './DayCard.module.scss'
-import { Card } from '@/components/ui/card/Card'
 import {
 	WeatherIcon,
 	WeatherIconSize,
@@ -17,7 +16,7 @@ const DayCard = ({ item }: CardDayProps) => {
 	const { dt, main, weather } = item
 
 	return (
-		<Card>
+		<div className={classNames(classes.DayCard)}>
 			<VStack gap="4">
 				<p className={classNames(classes.dayweek)}>{getTime(dt)}</p>
 				<WeatherIcon name={weather[0].icon} size={WeatherIconSize.MEDIUM} />
@@ -25,7 +24,7 @@ const DayCard = ({ item }: CardDayProps) => {
 					main.temp,
 				)}°`}</p>
 			</VStack>
-		</Card>
+		</div>
 	)
 }
 

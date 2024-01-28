@@ -2,7 +2,6 @@ import { fetchForecast, fetchWeather } from '@/helpers/api-helper'
 import { getForecastNormalize, getWeatherNormalize } from '@/helpers/helpers'
 import { ForecastNormalize } from '@/models/forecast'
 import { WeatherNormalize } from '@/models/weather'
-import { toast } from 'react-toastify'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
@@ -13,15 +12,15 @@ interface WeatherStoreState {
 	forecastWeather: ForecastNormalize | undefined
 	lastCities: string[]
 	addLastCity: (city: string) => void
-	fetchWeather: (city: string) => void
+	fetchWeather: (city?: string) => Promise<{ ok: boolean }>
 }
 
 const useWeatherStore = create<WeatherStoreState>()(
 	persist(
 		(set, get) => ({
 			currentWeather: undefined,
-			forecastWeather: undefined,
-			lastCities: [],
+			forecastWeather: {},
+			lastCities: ['Москва'],
 			error: '',
 			loading: false,
 			addLastCity: (cityName) => {
@@ -29,7 +28,7 @@ const useWeatherStore = create<WeatherStoreState>()(
 				set({ lastCities: [cityName, ...cities].slice(0, 9) })
 			},
 			fetchWeather: async (city: string = get().lastCities[0]) => {
-				if (!city) return
+				if (!city) return new Promise((resolve) => resolve({ ok: false }))
 				set({ loading: true, error: '' })
 				try {
 					const responseCurrent = await fetchWeather(city)
@@ -45,13 +44,14 @@ const useWeatherStore = create<WeatherStoreState>()(
 					})
 
 					get().addLastCity(responseCurrent.name)
+					return new Promise((resolve) => resolve({ ok: true }))
 				} catch (error) {
 					set({ loading: false })
 					if (error instanceof Error) {
 						console.log(error.message)
 						set({ error: error.message })
-						toast.error(error.message)
 					}
+					return new Promise((resolve) => resolve({ ok: false }))
 				}
 			},
 		}),

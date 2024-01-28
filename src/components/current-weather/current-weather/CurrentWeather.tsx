@@ -4,7 +4,7 @@ import { VStack } from '@/components/ui/stack'
 
 const CurrentWeather = () => {
 	return (
-		<VStack gap="16">
+		<VStack max gap="16">
 			<CurrentWeatherInfo />
 			<CurrentWeatherDetails />
 		</VStack>

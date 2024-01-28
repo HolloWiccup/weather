@@ -1,25 +1,20 @@
 import { ForecastWeather } from '@/models/forecast'
 import { CityWeather } from '@/models/weather'
+import { toast } from 'react-toastify'
 
 const WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather'
 const FORECAST_URL = 'https://api.openweathermap.org/data/2.5/forecast'
 
 const API_KEY = 'aefaf2ee38ea734b4f10c61ceafcc3cc'
 
-export enum requestStatus {
-	IDLE = 'idle',
-	LOADING = 'loading',
-	SUCCEEDED = 'succeeded',
-	FAILED = 'failed',
-}
-
 const createUrl = (url: string, city: string) => {
 	return `${url}?q=${city}&APPID=${API_KEY}&units=metric&lang=ru`
 }
 
-const request = async<T>(url: string): Promise<T> => {
+const request = async <T>(url: string): Promise<T> => {
 	const response = await fetch(url)
 	if (!response.ok) {
+		toast.error(response.statusText)
 		throw new Error(response.statusText)
 	}
 	return await (response.json() as Promise<T>)

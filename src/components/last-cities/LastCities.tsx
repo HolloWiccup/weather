@@ -39,9 +39,7 @@ const LastCities = () => {
 						</button>
 					</div>
 				</HStack>
-				<HStack>
-					<div className={classNames(classes.cities)}>{cities}</div>
-				</HStack>
+				<HStack max gap='8'>{cities}</HStack>
 			</VStack>
 		</Paper>
 	)

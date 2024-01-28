@@ -35,8 +35,8 @@ const CurrentWeatherInfo = () => {
 	const temperatureCelsius = `${Math.round(temperature)}℃`
 
 	return (
-		<Paper>
-			<VStack gap="8">
+		<Paper max>
+			<VStack align='center' gap="8">
 				<HStack gap="8" className={classes.location}>
 					<IconSvg Svg={LocationIcon} />
 					<p>{city}</p>

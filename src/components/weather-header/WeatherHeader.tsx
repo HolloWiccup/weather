@@ -4,6 +4,7 @@ import { SearchForm } from '../search-form/SearchForm'
 import { getDate, getTime } from '@/helpers/helpers'
 import { Paper } from '../ui/paper/Paper'
 import { useWeatherStore } from '@/stores/weatherStore'
+import { HStack, VStack } from '../ui/stack'
 
 const WeatherHeader = () => {
 	const { currentWeather } = useWeatherStore((state) => state)
@@ -19,17 +20,17 @@ const WeatherHeader = () => {
 
 	return (
 		<Paper max>
-			<div className={classNames(classes.WeatherHeader)}>
-				<div>
+			<VStack>
+				<HStack max justify="between" gap="8">
 					<p className={classNames(classes.time)}>
 						{getTime(currentWeather.date)}
 					</p>
-					<p className={classNames(classes.date)}>
-						{getDate(currentWeather.date)}
-					</p>
-				</div>
-				<SearchForm />
-			</div>
+					<SearchForm />
+				</HStack>
+				<p className={classNames(classes.date)}>
+					{getDate(currentWeather.date)}
+				</p>
+			</VStack>
 		</Paper>
 	)
 }
