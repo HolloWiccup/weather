@@ -30,14 +30,14 @@ const LastCities = () => {
 			<VStack gap="8">
 				<HStack justify="between" max>
 					<span>Запрошенные города</span>
-					<div className={classNames(classes.buttons)}>
+					<HStack className={classNames(classes.buttons)}>
 						<button onClick={decrementIndex} disabled={disableDecrement}>
 							<span>{'⟵'}</span>
 						</button>
 						<button onClick={incrementIndex} disabled={disableIncrement}>
 							<span>{'⟶'}</span>
 						</button>
-					</div>
+					</HStack>
 				</HStack>
 				<HStack max gap='8'>{cities}</HStack>
 			</VStack>

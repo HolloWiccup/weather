@@ -1,7 +1,7 @@
 import { classNames } from '@/helpers/classNames'
 import classes from './ForecastTabs.module.scss'
 import { ForecastTab } from '../forecast-tab/ForecastTab'
-import { HStack } from '../ui/stack'
+import { HStack } from '../../ui/stack'
 
 interface ForecastTabs {
 	keys: string[]
@@ -10,10 +10,11 @@ interface ForecastTabs {
 }
 
 const ForecastTabs = ({ keys, onClick, activeTab }: ForecastTabs) => {
-
-	const tabs = keys.map((item) => (
+	const tabs = keys.map((item, index) => (
 		<ForecastTab
 			active={item === activeTab}
+			firstTab={index === 0}
+			lastTab={index === keys.length - 1}
 			name={item}
 			key={item}
 			onClick={onClick}
@@ -21,7 +22,7 @@ const ForecastTabs = ({ keys, onClick, activeTab }: ForecastTabs) => {
 	))
 
 	return (
-		<HStack max className={classNames(classes.ForecastTabs)} >
+		<HStack max className={classNames(classes.ForecastTabs)}>
 			{tabs}
 		</HStack>
 	)

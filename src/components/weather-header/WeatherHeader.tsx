@@ -11,11 +11,9 @@ const WeatherHeader = () => {
 
 	if (!currentWeather)
 		return (
-			<div className={classNames(classes.WeatherHeader)}>
-				<Paper max>
-					<SearchForm />
-				</Paper>
-			</div>
+			<Paper max>
+				<SearchForm />
+			</Paper>
 		)
 
 	return (

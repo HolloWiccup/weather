@@ -12,13 +12,13 @@ import {
 import { useWeatherStore } from '@/stores/weatherStore'
 
 const skeleton = (
-	<Paper>
-		<VStack gap="8">
+	<Paper max>
+		<VStack align='center' gap="8">
 			<HStack gap="8">
 				<Skeleton width={24} height={24} />
 				<Skeleton width={160} height={24} />
 			</HStack>
-			<Skeleton width={200} height={200} />
+			<Skeleton height={200} />
 			<Skeleton width={70} height={50} />
 		</VStack>
 	</Paper>

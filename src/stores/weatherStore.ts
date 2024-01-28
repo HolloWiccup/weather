@@ -19,7 +19,7 @@ const useWeatherStore = create<WeatherStoreState>()(
 	persist(
 		(set, get) => ({
 			currentWeather: undefined,
-			forecastWeather: {},
+			forecastWeather: undefined,
 			lastCities: ['Москва'],
 			error: '',
 			loading: false,
@@ -57,6 +57,7 @@ const useWeatherStore = create<WeatherStoreState>()(
 		}),
 		{
 			name: 'weather-city',
+			version: 2
 		},
 	),
 )

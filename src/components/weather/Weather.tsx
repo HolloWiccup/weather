@@ -1,19 +1,20 @@
 import { WeatherHeader } from '../weather-header/WeatherHeader'
-import { Forecast } from '../forecast/Forecast'
 import { LastCities } from '../last-cities/LastCities'
 import { HStack, VStack } from '../ui/stack'
 import { CurrentWeather } from '../current-weather'
-// import { useWeatherStore } from '@/stores/weatherStore'
+import { useWeatherStore } from '@/stores/weatherStore'
+import { Forecast } from '../forecast'
+import { useResize } from '@/hooks/useResize'
 
-// useWeatherStore.getState().fetchWeather()
+useWeatherStore.getState().fetchWeather()
 
 const Weather = () => {
-	const isMobile = window.innerWidth < 768
+	const { isScreenMd } = useResize()
 
-	if (isMobile) {
+	if (!isScreenMd) {
 		return (
-			<HStack gap="16" align="start">
-				<VStack gap="16">
+			<HStack max gap="16">
+				<VStack align="center" max gap="16">
 					<WeatherHeader />
 					<CurrentWeather />
 					<Forecast />
