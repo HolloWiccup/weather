@@ -5,8 +5,9 @@ import { getDate, getTime } from '@/helpers/helpers'
 import { Paper } from '../ui/paper/Paper'
 import { useWeatherStore } from '@/stores/weatherStore'
 import { HStack, VStack } from '../ui/stack'
+import { memo } from 'react'
 
-const WeatherHeader = () => {
+const WeatherHeader = memo(() => {
 	const { currentWeather } = useWeatherStore((state) => state)
 
 	if (!currentWeather)
@@ -31,6 +32,6 @@ const WeatherHeader = () => {
 			</VStack>
 		</Paper>
 	)
-}
+})
 
 export { WeatherHeader }

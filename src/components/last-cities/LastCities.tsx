@@ -1,12 +1,12 @@
 import { classNames } from '@/helpers/classNames'
 import classes from './LastCities.module.scss'
 import { CityCard } from '../city-card/CityCard'
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import { useWeatherStore } from '@/stores/weatherStore'
 import { Paper } from '../ui/paper/Paper'
 import { HStack, VStack } from '../ui/stack'
 
-const LastCities = () => {
+const LastCities = memo(() => {
 	const [index, setIndex] = useState(0)
 	const { fetchWeather, lastCities } = useWeatherStore((state) => state)
 
@@ -39,10 +39,12 @@ const LastCities = () => {
 						</button>
 					</HStack>
 				</HStack>
-				<HStack max gap='8'>{cities}</HStack>
+				<HStack max gap="8" className={classNames(classes.cities)}>
+					{cities}
+				</HStack>
 			</VStack>
 		</Paper>
 	)
-}
+})
 
 export { LastCities }

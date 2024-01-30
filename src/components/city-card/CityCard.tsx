@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { CityWeather } from '@/models/weather'
 import { WeatherIcon } from '../weather-icon/WeatherIcon'
 import { fetchWeather } from '@/helpers/api-helper'
@@ -12,7 +12,7 @@ interface CityCardProps {
 	onClick: (name: string) => void
 }
 
-const CityCard = ({ name, onClick }: CityCardProps) => {
+const CityCard = memo(({ name, onClick }: CityCardProps) => {
 	const [cityWeather, setCityWeather] = useState<CityWeather>()
 	const [loading, setLoading] = useState(true)
 
@@ -45,18 +45,18 @@ const CityCard = ({ name, onClick }: CityCardProps) => {
 	} else {
 		content = (
 			<button onClick={onClickHandler} className={classNames(classes.CityCard)}>
-				<HStack justify="between">
-					<VStack>
-						<p>{name}</p>
-						<span>{`${Math.round(cityWeather.main.temp)}℃`}</span>
-					</VStack>
+				<HStack justify="between" gap='8'>
 					<WeatherIcon name={cityWeather.weather[0].icon} />
+					<VStack align="start">
+						<p className={classNames(classes.name)}>{name}</p>
+						<p>{`${Math.round(cityWeather.main.temp)}℃`}</p>
+					</VStack>
 				</HStack>
 			</button>
 		)
 	}
 
 	return <>{content}</>
-}
+})
 
 export { CityCard }

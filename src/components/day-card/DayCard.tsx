@@ -7,12 +7,13 @@ import {
 import { ForecastItem } from '@/models/forecast'
 import { getTime } from '@/helpers/helpers'
 import { VStack } from '../ui/stack'
+import { memo } from 'react'
 
 interface CardDayProps {
 	item: ForecastItem
 }
 
-const DayCard = ({ item }: CardDayProps) => {
+const DayCard = memo(({ item }: CardDayProps) => {
 	const { dt, main, weather } = item
 
 	return (
@@ -26,6 +27,6 @@ const DayCard = ({ item }: CardDayProps) => {
 			</VStack>
 		</div>
 	)
-}
+})
 
 export { DayCard }

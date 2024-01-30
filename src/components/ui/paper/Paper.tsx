@@ -1,6 +1,6 @@
 import { classNames } from '@/helpers/classNames'
 import classes from './Paper.module.scss'
-import { ReactNode } from 'react'
+import { ReactNode, memo } from 'react'
 
 interface PaperProps {
 	children: ReactNode
@@ -8,7 +8,7 @@ interface PaperProps {
 	max?: boolean
 }
 
-const Paper = (props: PaperProps) => {
+const Paper = memo((props: PaperProps) => {
 	const { children, max, className } = props
 
 	return (
@@ -18,6 +18,6 @@ const Paper = (props: PaperProps) => {
 			{children}
 		</div>
 	)
-}
+})
 
 export { Paper }

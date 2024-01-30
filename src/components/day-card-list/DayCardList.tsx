@@ -19,9 +19,9 @@ const DayCardList = ({ hourlyWether }: DayCardListProps) => {
 
 	return (
 		<div className={classNames(classes.DayCardList)}>
-			<HStack max gap="8" wrap>
-				{...cards}
-			</HStack>
+			{/* <HStack max gap="8" wrap> */}
+				{cards}
+			{/* </HStack> */}
 		</div>
 	)
 }

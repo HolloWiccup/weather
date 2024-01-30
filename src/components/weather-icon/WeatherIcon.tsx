@@ -2,6 +2,7 @@ import classes from './WeatherIcon.module.scss'
 import { classNames } from '@/helpers/classNames'
 import { useDynamicSVGImport } from '@/hooks/useDynamicSvgImport'
 import { Skeleton } from '../ui/skeleton/Skeleton'
+import { memo } from 'react'
 
 enum WeatherIconSize {
 	BIG = 'big',
@@ -14,7 +15,7 @@ interface WeatherIconProps {
 	size?: WeatherIconSize
 }
 
-const WeatherIcon = (props: WeatherIconProps) => {
+const WeatherIcon = memo((props: WeatherIconProps) => {
 	const { name, size = WeatherIconSize.MEDIUM } = props
 	const { SvgIcon } = useDynamicSVGImport(name)
 
@@ -29,6 +30,6 @@ const WeatherIcon = (props: WeatherIconProps) => {
 			)}
 		</div>
 	)
-}
+})
 
 export { WeatherIcon, WeatherIconSize }

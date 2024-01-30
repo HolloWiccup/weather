@@ -5,8 +5,9 @@ import { HStack, VStack } from '../../ui/stack'
 import { useWeatherStore } from '@/stores/weatherStore'
 import { Skeleton } from '../../ui/skeleton/Skeleton'
 import { useTab } from '@/hooks/useTab'
+import { memo } from 'react'
 
-const Forecast = () => {
+const Forecast = memo(() => {
 	const { forecastWeather, loading } = useWeatherStore((state) => state)
 	const { activeTab, setActiveTab, keys } = useTab(forecastWeather)
 
@@ -38,6 +39,6 @@ const Forecast = () => {
 			</VStack>
 		</Paper>
 	)
-}
+})
 
 export { Forecast }
